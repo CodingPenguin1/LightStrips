@@ -3,7 +3,6 @@ import os
 
 import discord
 from discord.ext import commands, tasks
-from discord_components import DiscordComponents
 from dotenv import load_dotenv
 import subprocess
 
@@ -15,9 +14,6 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 
 @bot.event
 async def on_ready():
-    # Set up Discord Components
-    DiscordComponents(bot)
-
     ip_status.start()
 
     # Load all cogs
