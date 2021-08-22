@@ -30,7 +30,7 @@ class Updates(commands.Cog):
 
     @commands.command()
     async def ip(self, ctx):
-        output = subprocess.run(('/usr/bin/ifconfig'), shell=True, capture_output=True, text=True).stdout.split('\n')
+        output = subprocess.run(('/sbin/ifconfig'), shell=True, stdout=subprocess.PIPE).stdout.decode('utf-8').split('\n')
         for line in output:
             if 'inet ' in line:
                 ip = line[:line.find(' netmask')].replace('inet', ' ').strip()
