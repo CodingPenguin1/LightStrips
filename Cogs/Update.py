@@ -1,6 +1,8 @@
+import os
+
 import discord
 from discord.ext import commands
-import os
+import subprocess
 
 
 def setup(bot):
@@ -25,3 +27,13 @@ class Updates(commands.Cog):
                     pass
 
         await ctx.send('Done')
+
+    @commands.command()
+    async def ip(self, ctx):
+        output = subprocess.run(('/usr/bin/ifconfig'), shell=True, capture_output=True, text=True).stdout.split('\n')
+        for line in output:
+            if 'inet ' in line:
+                ip = line[:line.find(' netmask')].replace('inet', ' ').strip()
+                if ip != '127.0.0.1':
+                    await ctx.send(ip)
+                    return
