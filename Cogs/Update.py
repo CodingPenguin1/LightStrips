@@ -22,7 +22,7 @@ class Updates(commands.Cog):
         for file in os.listdir('Cogs'):
             if not file.startswith('__') and file.endswith('.py'):
                 try:
-                    self.bot.reload_extension(f'Cogs.{file[:-3]}')
+                    self.bot.reload_extension('Cogs.' + file[:-3])
                 except commands.errors.NoEntryPointError:
                     pass
 

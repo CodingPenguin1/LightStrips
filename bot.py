@@ -24,7 +24,7 @@ async def on_ready():
     for file in os.listdir('Cogs'):
         if not file.startswith('__') and file.endswith('.py'):
             try:
-                bot.load_extension(f'Cogs.{file[:-3]}')
+                bot.load_extension('Cogs.' + file[:-3])
             except commands.errors.NoEntryPointError:
                 pass
 
