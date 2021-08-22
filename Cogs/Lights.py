@@ -13,7 +13,7 @@ def setup(bot):
 class Lights(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.strip_length = 300
+        self.strip_length = 450
         self.pixels = neopixel.NeoPixel(board.D18, self.strip_length, pixel_order=neopixel.RGB)
 
     @commands.command()
@@ -21,4 +21,4 @@ class Lights(commands.Cog):
         for i in range(self.strip_length):
             self.pixels[i] = (255, 255, 255)
             self.pixels.show()
-            sleep(0.1)
+            sleep(0.05)
