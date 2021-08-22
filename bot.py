@@ -27,9 +27,10 @@ async def on_ready():
 
 @tasks.loop(seconds=60)
 async def ip_status():
+    #output = subprocess.run(('/usr/bin/ifconfig'), shell=True).stdout.split('\n')
     #output = subprocess.run(('/sbin/ifconfig'), shell=True)
-    output = subprocess.run(('/sbin/ifconfig'), shell=True).split('\n')
-    print(output)
+    output = subprocess.run(('/sbin/ifconfig'), shell=True).stdout.split('\n')
+    print(type(output))
     for line in output:
         if 'inet ' in line:
             ip = line[:line.find(' netmask')].replace('inet', ' ').strip()
