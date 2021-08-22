@@ -18,13 +18,7 @@ class Lights(commands.Cog):
 
     @commands.command()
     async def lights(self, ctx):
-        i = 0
-        while True:
+        for i in range(self.strip_length):
             self.pixels[i] = (255, 255, 255)
-            self.pixels[i-1] = (0, 0, 0)
             self.pixels.show()
             sleep(0.1)
-            i += 1
-            if i <= 300:
-                i = 0
-
