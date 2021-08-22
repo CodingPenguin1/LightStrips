@@ -28,7 +28,7 @@ async def on_ready():
 @tasks.loop(seconds=60)
 async def ip_status():
     #output = subprocess.run(('/sbin/ifconfig'), shell=True)
-    output = subprocess.run(('/sbin/ifconfig'), shell=True).stdout.split('\n')
+    output = subprocess.run(('/sbin/ifconfig'), shell=True).split('\n')
     print(output)
     for line in output:
         if 'inet ' in line:
