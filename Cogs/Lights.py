@@ -19,7 +19,8 @@ class Lights(commands.Cog):
         self.kwargs = {'r': 0, 'g': 0, 'b': 0}
 
         while True:
-            new_frame = self.current_effect(**self.kwargs)
+            generator = self.current_effect(**self.kwargs)
+            new_frame = next(generator)
             print(new_frame)
             for i, pixel in enumerate(new_frame):
                 self.pixels[i] = pixel
