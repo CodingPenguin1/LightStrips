@@ -20,6 +20,7 @@ class Lights(commands.Cog):
 
         while True:
             new_frame = self.current_effect(**self.kwargs)
+            print(new_frame)
             for i, pixel in enumerate(new_frame):
                 self.pixels[i] = pixel
             self.pixels.show()
@@ -31,7 +32,6 @@ class Lights(commands.Cog):
         await ctx.send(func_name + ' | ' + str(kwargs))
 
     def solid(self, **kwargs):
-        print(kwargs)
         r = kwargs['r']
         g = kwargs['g']
         b = kwargs['b']
