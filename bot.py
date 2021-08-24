@@ -21,8 +21,9 @@ async def on_ready():
         if not file.startswith('__') and file.endswith('.py'):
             try:
                 bot.load_extension('Cogs.' + file[:-3])
+                print('Loaded ' + file[:-3])
             except commands.errors.NoEntryPointError:
-                pass
+                print('Failed to load ' + file[:-3])
 
 
 @tasks.loop(seconds=60)
