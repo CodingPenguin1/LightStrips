@@ -15,16 +15,21 @@ class Lights(commands.Cog):
         self.strip_length = 450
         self.pixels = neopixel.NeoPixel(board.D18, self.strip_length, pixel_order=neopixel.RGB)
 
-    async def clear(self, show=True):
-        for i in range(self.strip_length):
-            self.pixels[i] = (0, 0, 0)
-        if show:
+        self.current_effect = self.solid
+        self.args = []
+        self.kwargs = {'r': 0, 'g': 0, 'b': 0}
+
+        while True:
+            new_frame = self.current_effect(args=self.args, kwargs=self.kwargs)
+            for i, pixel in enumerate(new_frame):
+                self.pixels[i] = pixel
             self.pixels.show()
 
     @commands.command()
-    async def lights(self, ctx):
-        await self.clear()
-        for i in range(self.strip_length):
-            self.pixels[i] = (255, 255, 255)
-            self.pixels.show()
-            sleep(0.05)
+    async def lights(self, ctx, func_name, *args, **kwargs):
+        self.current_effect = getattr(self, func_name)
+        self.args = args
+        self.kwargs = kwargs
+
+    async def solid(self, r, g, b):
+        yield [(r, g, b) for _ in range(self.strip_length)]
