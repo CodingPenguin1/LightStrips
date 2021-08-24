@@ -28,3 +28,4 @@ class Lights(commands.Cog):
             self.pixels[i] = (255, 255, 255)
             self.pixels.show()
             sleep(0.05)
+
