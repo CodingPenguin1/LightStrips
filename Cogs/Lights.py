@@ -1,7 +1,6 @@
 import board
 import neopixel
 
-import discord
 from discord.ext import commands
 from time import sleep
 
@@ -21,7 +20,6 @@ class Lights(commands.Cog):
             self.pixels[i] = (0, 0, 0)
         if show:
             self.pixels.show()
-
 
     @commands.command()
     async def lights(self, ctx):
