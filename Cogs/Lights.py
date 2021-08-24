@@ -30,6 +30,7 @@ class Lights(commands.Cog):
         self.current_effect = getattr(self, func_name)
         self.args = args
         self.kwargs = kwargs
+        await ctx.send(func_name + ' | ' + str(args) + ' | ' + str(kwargs))
 
     async def solid(self, r, g, b):
         yield [(r, g, b) for _ in range(self.strip_length)]
