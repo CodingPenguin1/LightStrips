@@ -31,6 +31,7 @@ class Lights(commands.Cog):
         await ctx.send(func_name + ' | ' + str(kwargs))
 
     def solid(self, **kwargs):
+        print(kwargs)
         r = kwargs['r']
         g = kwargs['g']
         b = kwargs['b']
