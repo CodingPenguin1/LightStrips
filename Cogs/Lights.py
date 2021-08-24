@@ -32,5 +32,5 @@ class Lights(commands.Cog):
         self.kwargs = kwargs
         await ctx.send(func_name + ' | ' + str(args) + ' | ' + str(kwargs))
 
-    async def solid(self, r, g, b):
+    def solid(self, r, g, b):
         yield [(r, g, b) for _ in range(self.strip_length)]
