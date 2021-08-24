@@ -29,4 +29,4 @@ class Lights(commands.Cog):
             self.pixels.show()
             sleep(0.05)
 
-    
+    @commands.command
